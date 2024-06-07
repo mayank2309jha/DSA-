@@ -1,0 +1,20 @@
+    public static long power(long x, long p) {
+        return (long)Math.pow(x,p);
+    }
+
+    public static long nthroot(long left, long right, long num, long n) {
+        // we have to find the n-th root of the num.
+        while (left < right) {
+            long middle = left + (right - left) / 2;
+            long p = power(middle, num);
+            System.out.println(left + " " + right + " " + middle + " " + p);
+            if (p > num) {
+                return nthroot(left, middle - 1, num, n);
+            } else if (p == num) {
+                return middle;
+            } else {
+                return nthroot(middle + 1, right, num, n);
+            }
+        }
+        return -1;
+    }
